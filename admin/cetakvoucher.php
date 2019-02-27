@@ -49,7 +49,7 @@ $sql = mysql_fetch_array(mysql_query("SELECT * FROM request WHERE no_voucher='$_
 		<th class="col-md-2">Jumlah</th>
 	</tr>
 	<?php
-		$brg=mysql_query("SELECT * FROM request,tbl_user WHERE request.id=tbl_user.id AND no_voucher='$_GET[no_voucher]'");
+		$brg=mysql_query("SELECT * FROM request,tbl_supplier WHERE request.id=tbl_supplier.id_supplier AND no_voucher='$_GET[no_voucher]'");
 		$no=0;
 		while($b=mysql_fetch_array($brg)){
 			$no++;
@@ -59,10 +59,10 @@ $sql = mysql_fetch_array(mysql_query("SELECT * FROM request WHERE no_voucher='$_
 			<td><?php echo $no++ ?></td>
 			<td><?php echo $b['no_invoice']?></td>
 			<td><?php echo $b['tgl_inv']?></td>
-			<td><?php echo $b['nama'] ?></td>
-			
+			<td><?php echo $b['nama_supplier'] ?></td>
+
 			<td><?php echo number_format($b['total_harga']) ?></td>
-			
+
 			<td></td>
 			<td><?php echo number_format($b['total_harga']) ?></td>
 		</tr>

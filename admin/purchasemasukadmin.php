@@ -16,7 +16,7 @@
 
 	</tr>
 	<?php
-		$brg=mysql_query("SELECT * FROM request, tbl_user WHERE request.id=tbl_user.id");
+		$brg=mysql_query("SELECT * FROM request, tbl_supplier WHERE request.id=tbl_supplier.id_supplier");
 	$no=1;
 	while($b=mysql_fetch_array($brg)){
 		?>
@@ -25,7 +25,7 @@
 			<td><a href="detailpurchase.php?id=<?php echo $b['no_faktur'] ?>"><?php echo $b['no_faktur'] ?></a></td>
 			<td><?php echo $b['tgl_request'] ?></td>
 			<td><?php echo $b['status'] ?></td>
-			<td><?php echo $b['nama'] ?></td>
+			<td><?php echo $b['nama_supplier'] ?></td>
 			<td><?php echo $b['total_harga'] ?></td>
 			<td><?php echo $b['project'] ?></td>
             <td><?php echo $b['no_po'] ?></td>
@@ -34,9 +34,9 @@
 				<?php
 					if($b['status']=='Tunggu Konfirmasi Admin'){
  				?>
-				<a onclick="if(confirm('Apakah anda yakin ingin Konfirmasi data ini ??')){ location.href='konfirmasipurchaseadmin.php?id=<?php echo $b['no_faktur']; ?>' }" class="btn btn-danger">Konfirmasi</a>                
+				<a onclick="if(confirm('Apakah anda yakin ingin Konfirmasi data ini ??')){ location.href='konfirmasipurchaseadmin.php?id=<?php echo $b['no_faktur']; ?>' }" class="btn btn-danger">Konfirmasi</a>
 				<?php }else if($b['status']=='Telah di Konfirmasi Admin'){ ?>
-				<i class="glyphicon glyphicon-ok"></i>                
+				<i class="glyphicon glyphicon-ok"></i>
 			<?php }else if($b['status']=='Transaksi Sukses'){ ?>
 			<i class="glyphicon glyphicon-ok-sign"></i>
 				<?php } ?>

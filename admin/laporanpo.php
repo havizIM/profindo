@@ -20,7 +20,7 @@ include 'header.php';
         <label>Sort By</label>
         <select class="form-control" name="sort_by">
           <option value="">-- Pilih Sort --</option>
-          <option value="c.supplier">Supplier</option>
+          <option value="d.nama_supplier">Supplier</option>
           <option value="a.no_po">No. PO</option>
           <option value="a.project">Project</option>
         </select>

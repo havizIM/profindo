@@ -7,7 +7,7 @@
 
   if($sort_by == 'a.tgl_inv'){
     $sort_status = 'Tgl Invoice';
-  } else if($sort_by == 'c.supplier') {
+  } else if($sort_by == 'd.nama_supplier') {
     $sort_status = 'Supplier';
   } else if($sort_by == 'a.project') {
     $sort_status = 'Project';
@@ -34,7 +34,7 @@
 
   <?php
 //Koneksi Ke server Database
-    $sql   = "SELECT * FROM request a LEFT JOIN detail_request b ON b.no_faktur = a.no_faktur LEFT JOIN tbl_barang c ON c.kd_barang = b.kd_barang WHERE a.status = 'Barang Telah di Terima' AND (a.tgl_inv BETWEEN '$tgl_awal' AND '$tgl_akhir') ORDER BY $sort_by ASC";
+    $sql   = "SELECT * FROM request a LEFT JOIN detail_request b ON b.no_faktur = a.no_faktur LEFT JOIN tbl_barang c ON c.kd_barang = b.kd_barang LEFT JOIN tbl_supplier d ON d.id_supplier = a.id WHERE a.status = 'Barang Telah di Terima' AND a.tgl_inv BETWEEN '$tgl_awal' AND '$tgl_akhir' ORDER BY $sort_by ASC";
     $querry = mysql_query($sql);
     $total = mysql_num_rows($querry);
     $no = 1;
@@ -59,7 +59,7 @@
           <td><?= $data['no_invoice'] ?></td>
           <td><?= number_format($total_harga) ?></td>
           <td><?= $data['status'] ?></td>
-          <td><?= $data['supplier'] ?></td>
+          <td><?= $data['nama_supplier'] ?></td>
           <td><?= $data['project'] ?></td>
         </tr>
 

@@ -20,10 +20,10 @@ include 'header.php';
         <label>Sort By</label>
         <select class="form-control" name="sort_by">
           <option value="">-- Pilih Sort --</option>
-          <option value="a.tgl_tr">Supplier</option>
-          <option value="c.supplier">No. PO</option>
+          <option value="a.tgl_tr">Tanggal Transfer</option>
+          <option value="d.nama_supplier">Supplier</option>
           <option value="a.project">Project</option>
-          <option value="a.no_voucher">Project</option>
+          <option value="a.no_voucher">No Voucher</option>
         </select>
       </div>
       <div class="form-group">

@@ -9,15 +9,15 @@ $sql = mysql_fetch_array(mysql_query("SELECT * FROM request,tbl_user WHERE reque
 	</tr>
 </table>
 	<h1 align="center">Purchase Order</h1>
-	<table width="630">
+	<table width="658">
 		<tr>
-			<td width="62">Kepada Yth<br> <?php echo $sql['nama'] ?></td>
-			<td width=25></td>
-			<td width="134">Project : <?php echo $sql['project'] ?></td>
+			<td width="92">Kepada Yth<br> <?php echo $sql['nama'] ?></td>
+			<td width=38></td>
+			<td width="170">Project : <?php echo $sql['project'] ?></td>
             <td width=10></td>
-			<td width="90">No PO : <?php echo $sql['no_po'] ?></td>
+			<td width="131">No PO : <?php echo $sql['no_po'] ?></td>
             <td width=10></td>
-			<td width="90">Tanggal : <?php echo $sql['tgl_request'] ?></td>
+			<td width="180">Tanggal : <?php echo $sql['tgl_request'] ?></td>
 		</tr>
 	</table>
 	<br><br>

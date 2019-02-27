@@ -16,7 +16,6 @@
 		<th class="col-md-2">Nama Barang</th>
 		<th class="col-md-2">Satuan</th>
 		<th class="col-md-2">Harga</th>
-		<th class="col-md-2">Supplier</th>
 		<th class="col-md-2">Opsi</th>
 
 	</tr>
@@ -36,7 +35,6 @@
 			<td><?php echo ucwords($b['nama_barang']) ?></td>
 			<td><?php echo $b['satuan'] ?></td>
 			<td><?php echo "Rp. ".number_format($b['harga']) ?></td>
-			<td><?php echo $b['supplier'] ?></td>
 			<td>
 				<a href="editbarang.php?id=<?php echo $b['kd_barang']; ?>" class="btn btn-warning">Edit</a>
 				<a onclick="if(confirm('Apakah anda yakin ingin menghapus data ini ??')){ location.href='hapusbarang.php?id=<?php echo $b['kd_barang']; ?>' }" class="btn btn-danger">Hapus</a>
@@ -70,11 +68,7 @@
 					</div>
 					<div class="form-group">
 						<label>Harga</label>
-						<input name="harga" type="text" class="form-control" placeholder="Harga">
-					</div>
-					<div class="form-group">
-						<label>Supplier</label>
-						<input name="supplier" type="text" class="form-control" placeholder="Supplier">
+						<input name="harga" type="number" class="form-control" placeholder="Harga">
 					</div>
 
 

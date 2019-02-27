@@ -15,7 +15,6 @@ $tgl=@$_POST["bulan"];
 		<th class="col-md-2">Nama Barang</th>
 		<th class="col-md-2">Satuan</th>
 		<th class="col-md-2">Harga</th>
-		<th class="col-md-2">Supplier</th>
 
 	</tr>
 	<?php
@@ -31,7 +30,6 @@ $tgl=@$_POST["bulan"];
 			<td><?php echo ucwords($b['nama_barang']) ?></td>
 			<td><?php echo $b['satuan'] ?></td>
 			<td><?php echo $b['harga'] ?></td>
-			<td><?php echo $b['supplier'] ?></td>
 
 		</tr>
 		<?php

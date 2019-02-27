@@ -21,10 +21,6 @@ $d=mysql_fetch_array($det);
 				<td>Harga</td>
 				<td><input type="text" class="form-control" name="harga" value="<?php echo $d['harga'] ?>"></td>
 			</tr>
-			<tr>
-				<td>Supplier</td>
-				<td><input type="text" class="form-control" name="supplier" value="<?php echo $d['supplier'] ?>"></td>
-			</tr>
 
 			<tr>
 				<td></td>
@@ -39,9 +35,8 @@ if(isset($_POST["simpan"])){
 $nama		= $_POST['nama_barang'];
 $satuan     = $_POST['satuan'];
 $harga		= $_POST['harga'];
-$jml		= $_POST['supplier'];
 
-mysql_query("update tbl_barang set nama_barang='$nama', satuan='$satuan', supplier='$jml', harga='$harga' where kd_barang='$_GET[id]'");
+mysql_query("update tbl_barang set nama_barang='$nama', satuan='$satuan', harga='$harga' where kd_barang='$_GET[id]'");
 echo "<script>window.location='barang.php';</script>";
 }
 ?>

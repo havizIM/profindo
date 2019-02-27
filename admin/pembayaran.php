@@ -17,10 +17,10 @@ $tgl2=@$_POST["tgl2"];
 						<select name="supplier" class="form-control">
 							<option value="">-- Pilih Supplier--</option>
 							<?php
-								$sql = mysql_query("SELECT * FROM request,tbl_user WHERE request.id=tbl_user.id AND status='Barang Telah di Terima' GROUP BY request.id");
+								$sql = mysql_query("SELECT * FROM request,tbl_supplier WHERE request.id=tbl_supplier.id_supplier AND status='Barang Telah di Terima' GROUP BY request.id");
 								while($r=mysql_fetch_array($sql)){
  							?>
-								<option value="<?php echo $r['id']?>"><?php echo $r['nama'] ?></option>
+								<option value="<?php echo $r['id_supplier']?>"><?php echo $r['nama_supplier'] ?></option>
 							<?php } ?>
 						</select>
 				</td>
@@ -31,7 +31,7 @@ $tgl2=@$_POST["tgl2"];
 		</table>
 	<h3>Supplier : <?php
 									error_reporting(0);
-										$nm = mysql_fetch_array(mysql_query("SELECT * FROM tbl_user WHERE id='$_POST[supplier]'"));
+										$nm = mysql_fetch_array(mysql_query("SELECT * FROM tbl_supplier WHERE id='$_POST[supplier]'"));
 									echo $nm['nama'] ?></h3>
 	<table class="table">
 		<tr>
@@ -70,6 +70,8 @@ $tgl2=@$_POST["tgl2"];
 					<td> : </td>
 					<td><input type="text" name="norek" class="form-control">
 							<input type="hidden" name="idsup" class="form-control" value="<?php echo $_POST['supplier'] ?>"></td>
+							<input type="hidden" name="tgl_awal" value="<?php echo $tgl1 ?>">
+							<input type="hidden" name="tgl_akhir" value="<?php echo $tgl2 ?>">
 				</tr>
 				<tr>
 					<td>Nama Bank</td>
@@ -109,7 +111,7 @@ if(isset($_POST["bayar"])){
 	$kode = "VB";
 	$kodebaru = $kode . sprintf("%03s", $nourut);
 
-	$update = mysql_query("UPDATE request SET status='Menunggu Konfirmasi Pembayaran', no_rek='$_POST[norek]', nm_bank='$_POST[nmbank]', no_voucher='$kodebaru', tgl_tr='$_POST[tgl_tr]', jam_tr='$_POST[jam_tr]' WHERE id='$_POST[idsup]' AND status='Barang Telah di Terima'");
+	$update = mysql_query("UPDATE request SET status='Menunggu Konfirmasi Pembayaran', no_rek='$_POST[norek]', nm_bank='$_POST[nmbank]', no_voucher='$kodebaru', tgl_tr='$_POST[tgl_tr]', jam_tr='$_POST[jam_tr]' WHERE id='$_POST[idsup]' AND status='Barang Telah di Terima' AND tgl_inv BETWEEN '$_POST[tgl_awal]' AND '$_POST[tgl_akhir]'");
 
 	echo "<script>window.location='cetakvoucher.php?no_voucher=$kodebaru'</script>";
 }

@@ -6,19 +6,21 @@
 <br/>
 <table class="table table-bordered">
 	<tr class="info">
-		<th class="col-md-1">No</th>
+		<th class="col-md-0">No</th>
 		<th class="col-md-1">No Detail Pesanan</th>
 		<th class="col-md-2">Tanggal Request</th>
-		<th class="col-md-2">Status</th>
-		<th class="col-md-2">Supplier</th>
+		<th class="col-md-1">Status</th>
+		<th class="col-md-1">Supplier</th>
 		<th class="col-md-2">Total Harga</th>
-		<th class="col-md-2">Project</th>
-        <th class="col-md-2">No Invoice</th>
-        <th class="col-md-2">No Voucher</th>
+		<th class="col-md-1">Project</th>
+        <th class="col-md-1">No Invoice</th>
+        <th class="col-md-2">Tgl Invoice</th>
+        <th class="col-md-1">No Voucher</th>
+        <th class="col-md-2">Tgl Transfer</th>
 		<th class="col-md-2">Opsi</th>
 	</tr>
 	<?php
-		$brg=mysql_query("SELECT * FROM request, tbl_user WHERE request.id=tbl_user.id");
+		$brg=mysql_query("SELECT * FROM request, tbl_supplier WHERE request.id=tbl_supplier.id_supplier");
 	$no=1;
 	while($b=mysql_fetch_array($brg)){
 		?>
@@ -27,21 +29,23 @@
 			<td><a href="detailpurchase.php?id=<?php echo $b['no_faktur'] ?>"><?php echo $b['no_faktur'] ?></a></td>
 			<td><?php echo $b['tgl_request'] ?></td>
 			<td><?php echo $b['status'] ?></td>
-			<td><?php echo $b['nama'] ?></td>
+			<td><?php echo $b['nama_supplier'] ?></td>
 			<td><?php echo "Rp. ".number_format($b['total_harga']) ?></td>
 			<td><?php echo $b['project'] ?></td>
             <td><?php echo $b['no_invoice'] ?></td>
+            <td><?php echo $b['tgl_inv'] ?></td>
             <td><?php echo $b['no_voucher'] ?></td>
-			<td>            
+            <td><?php echo $b['tgl_tr'] ?></td>
+			<td>
 				<a onclick="if(confirm('Edit data ini ??')){ location.href='editdatapurchase.php?id=<?php echo $b['no_faktur']; ?>' }" class="btn btn-warning">Edit</a>
 				<?php
 					if($b['status']=='Telah di Konfirmasi Admin'){
  				?>
-				<a href='konfirmasipurchaseaccounting.php?id=<?php echo $b['no_faktur'] ?>' class="btn btn-danger">Konfirmasi</a>				
+				<a href='konfirmasipurchaseaccounting.php?id=<?php echo $b['no_faktur'] ?>' class="btn btn-danger">Konfirmasi</a>
 				<?php }else if($b['status']=='Telah di Konfirmasi Accounting'){ ?>
-				<i class="glyphicon glyphicon-ok"></i>				
+				<i class="glyphicon glyphicon-ok"></i>
 					<a onclick="if(confirm('Apakah anda yakin ingin Konfirmasi data ini ??')){ location.href='detailpurchase_aco.php?id=<?php echo $b['no_faktur']; ?>' }" class="btn btn-primary">Konfirmasi Penerimaan</a>
-				<?php }else if($b['status']=='Barang Telah di Terima'){ ?>				
+				<?php }else if($b['status']=='Barang Telah di Terima'){ ?>
 				<i class="glyphicon glyphicon-ok"></i> &nbsp;&nbsp;&nbsp;
 				Barang Telah di Terima
 

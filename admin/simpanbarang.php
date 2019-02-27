@@ -3,7 +3,6 @@
 
 $nama		= $_POST['nama_barang'];
 $satuan     = $_POST['satuan'];
-$supplier		= $_POST['supplier'];
 $harga		= $_POST['harga'];
 
 
@@ -14,9 +13,7 @@ $harga		= $_POST['harga'];
                        '',
 					   '$nama',
 					   '$satuan',
-						 '$harga',
-						 '$supplier',
-					   '$jml'
+						 '$harga'
 					   )";
 	   $querysimpan	= mysql_query($sqlsimpan);
 

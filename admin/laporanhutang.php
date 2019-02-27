@@ -21,7 +21,7 @@ include 'header.php';
         <select class="form-control" name="sort_by">
           <option value="">-- Pilih Sort --</option>
           <option value="a.tgl_inv">Tgl Invoice</option>
-          <option value="c.supplier">Supplier</option>
+          <option value="d.nama_supplier">Supplier</option>
           <option value="a.project">Project</option>
         </select>
       </div>

@@ -73,14 +73,14 @@ if(@$_GET['aksi']=='hapus'){
 	<select class="form-control" name="supplier" required>
 		<option value="">--Pilih Supplier--</option>
 		<?php
-			$sup = mysql_query("SELECT * FROM tbl_user WHERE level='supplier'");
+			$sup = mysql_query("SELECT * FROM tbl_supplier");
 			while($r=mysql_fetch_array($sup)){
  		?>
-			<option value="<?php echo $r['id'] ?>"><?php echo $r['nama'] ?></option>
+			<option value="<?php echo $r['id_supplier'] ?>"><?php echo $r['nama_supplier'] ?></option>
 		<?php } ?>
 	</select>
 	<br>
-	
+
 	<button type="submit" name="simpan" class="btn btn-info btn-block"><b>SIMPAN</b></button>
 	</form>
 
@@ -125,9 +125,9 @@ if(isset($_POST["simpan"])){
 		$query1 = mysql_query("INSERT INTO detail_request( no_faktur,kd_barang, jml)								  		 VALUES('$no_faktur','$data[kd_barang]','$data[jml]')")
 							or die('Ada kesalahan pada query insert request detail : '.mysql_error());
 
-		$br = mysql_fetch_array(mysql_query("SELECT * FROM tbl_barang WHERE kd_barang='$data[kd_barang]'"));
-			$tjml = $br['jumlah'] - $data['jml'];
-			$query2 = mysql_query("UPDATE tbl_barang SET jumlah   = '$tjml'	WHERE kd_barang = '$data[kd_barang]'") or die('Ada kesalahan pada query update jumlah : '.mysql_error());
+		// $br = mysql_fetch_array(mysql_query("SELECT * FROM tbl_barang WHERE kd_barang='$data[kd_barang]'"));
+		// 	$tjml = $br['jumlah'] - $data['jml'];
+		// 	$query2 = mysql_query("UPDATE tbl_barang SET jumlah   = '$tjml'	WHERE kd_barang = '$data[kd_barang]'") or die('Ada kesalahan pada query update jumlah : '.mysql_error());
 		}
 		if($query1){
 				$query3 = mysql_query("DELETE FROM tmp") or die('Ada kesalahan pada query delete : '.mysql_error());

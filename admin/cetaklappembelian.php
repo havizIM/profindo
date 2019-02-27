@@ -13,7 +13,7 @@
     $sort_status = 'Jumlah';
   } else if($sort_by == 'a.project') {
     $sort_status = 'Project';
-  } else if($sort_by == 'c.supplier') {
+  } else if($sort_by == 'd.nama_supplier') {
     $sort_status = 'Supplier';
   } else if($sort_by == 'a.no_po') {
     $sort_status = 'No. PO';
@@ -23,7 +23,7 @@
 <h2 align="center">PT. PROFINDO KARYA UTAMA </h2>
 <h5 align="center">Laporan Pembelian</h2>
 <hr align="center" width="100%">
-<h4 align="center">Periode : <?= date('d-m-Y', strtotime($tgl_awal)).' s/d '.date('d-m-Y', strtotime($tgl_awal)); ?></p></h3>
+<h4 align="center">Periode : <?= date('d-m-Y', strtotime($tgl_awal)).' s/d '.date('d-m-Y', strtotime($tgl_akhir)); ?></p></h3>
 <h4 align="center">Sort By : <?= $sort_status; ?></p></h3>
 
 
@@ -44,7 +44,7 @@
 
   <?php
 //Koneksi Ke server Database
-    $sql   = "SELECT * FROM request a LEFT JOIN detail_request b ON b.no_faktur = a.no_faktur LEFT JOIN tbl_barang c ON c.kd_barang = b.kd_barang WHERE a.tgl_request BETWEEN '$tgl_awal' AND '$tgl_akhir' ORDER BY $sort_by ASC";
+    $sql   = "SELECT * FROM request a LEFT JOIN detail_request b ON b.no_faktur = a.no_faktur LEFT JOIN tbl_barang c ON c.kd_barang = b.kd_barang LEFT JOIN tbl_supplier d ON d.id_supplier = a.id WHERE a.tgl_request BETWEEN '$tgl_awal' AND '$tgl_akhir' ORDER BY $sort_by ASC";
     $querry = mysql_query($sql);
     $total = mysql_num_rows($querry);
     $total_beli = 0;
@@ -71,7 +71,7 @@
           <td><?= number_format($total_harga) ?></td>
           <td><?= $data['no_invoice'] ?></td>
           <td><?= $data['tgl_inv'] ?></td>
-          <td><?= $data['supplier'] ?></td>
+          <td><?= $data['nama_supplier'] ?></td>
           <td><?= $data['no_po'] ?></td>
           <td><?= $data['project'] ?></td>
         </tr>

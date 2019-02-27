@@ -83,10 +83,11 @@
 			<?php if ($_SESSION['level'] == 'admin'){?>
 			<li><a href="user.php"><span class="glyphicon glyphicon-user"></span>  Data User</a></li>
 			<li><a href="barang.php"><span class="glyphicon glyphicon-list"></span>  Data Barang</a></li>
+			<li><a href="daftar_supp.php"><span class="glyphicon glyphicon-list"></span>  Data Supplier</a></li>
 			<li><a href="purchasemasukadmin.php"><span class="glyphicon glyphicon-briefcase"></span>  Data Purchase</a></li>
 			<li><a href="cetakbarang.php"><span class="glyphicon glyphicon-book"></span> Laporan Data Barang</a></li>
 			<li><a href="laporanpo.php"><span class="glyphicon glyphicon-book"></span> Laporan Purchase Order</a></li>
-            <li><a href="laporan.php"><span class="glyphicon glyphicon-book"></span> Laporan Pembelian</a></li>
+      <li><a href="laporan.php"><span class="glyphicon glyphicon-book"></span> Laporan Pembelian</a></li>
 			<?php }else if($_SESSION['level']== 'supervisor'){?>
 			<li><a href="purchase.php"><span class="glyphicon glyphicon-briefcase"></span> Data Purchase Request</a></li>
 
@@ -97,8 +98,8 @@
 
 			<?php }else if($_SESSION['level']== 'manajerkeuangan'){?>
 			<li><a href="laporan.php"><span class="glyphicon glyphicon-book"></span> Laporan Pembelian</a></li>
-            <li><a href=".php"><span class="glyphicon glyphicon-briefcase"></span> Laporan Pembayaran</a></li>
-            <li><a href=".php"><span class="glyphicon glyphicon-briefcase"></span> Laporan Hutang</a></li>
+            <li><a href="laporanpembayaran.php"><span class="glyphicon glyphicon-briefcase"></span> Laporan Pembayaran</a></li>
+            <li><a href="laporanhutang.php"><span class="glyphicon glyphicon-briefcase"></span> Laporan Hutang</a></li>
 			<?php } ?>
 			<!--<li><a href="ganti_pass.php"><span class="glyphicon glyphicon-lock"></span> Ganti Password</a></li>-->
 			<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>

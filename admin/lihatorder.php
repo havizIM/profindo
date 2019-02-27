@@ -1,7 +1,8 @@
 <body onLoad="window.preview()">
 <?php
 include 'koneksi.php';
-$sql = mysql_fetch_array(mysql_query("SELECT * FROM request,tbl_user WHERE request.id=tbl_user.id"));
+$id_faktur = $_GET['id'];
+$sql = mysql_fetch_array(mysql_query("SELECT * FROM request,tbl_supplier WHERE request.id=tbl_supplier.id_supplier AND request.no_faktur=$id_faktur"));
 ?>
 <table>
 	<tr>
@@ -11,7 +12,7 @@ $sql = mysql_fetch_array(mysql_query("SELECT * FROM request,tbl_user WHERE reque
 	<h1 align="center">Purchase Order</h1>
 	<table width="630">
 		<tr>
-			<td width="87">Kepada Yth<br> <?php echo $sql['nama'] ?></td>
+			<td width="87">Kepada Yth<br> <?php echo $sql['nama_supplier'] ?></td>
 			<td width=35></td>
 			<td width="169">Project : <?php echo $sql['project'] ?></td>
             <td width=10></td>
